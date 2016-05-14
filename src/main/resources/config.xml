@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource="db.properties"/>
+    <!--<settings>-->
+        <!--<setting name="logImpl" value="LOG4J"/>-->
+    <!--</settings>-->
+    <typeAliases>
+        <!--<typeAlias type="com.sully.domain.User" alias="_User"/>-->
+        <package name="com.sully.domain"/>
+    </typeAliases>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC" />
+            <!-- 配置数据库连接信息 -->
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}" />
+                <property name="url" value="${url}" />
+                <property name="username" value="${name}" />
+                <property name="password" value="${password}" />
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="com/sully/mapping/userMapper.xml"/>
+        <mapper resource="com/sully/mapping/orderMapper.xml"/>
+        <mapper resource="com/sully/mapping/classMapper.xml"/>
+        <!--<mapper class="com.sully.mapping.UserMapperI"/>-->
+    </mappers>
+</configuration>
