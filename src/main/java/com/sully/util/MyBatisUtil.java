@@ -21,6 +21,14 @@ public class MyBatisUtil {
         sqlSessionFactory = new SqlSessionFactoryBuilder().build(is);
     }
 
+    public static SqlSessionFactory getSqlSessionFactory() {
+        return sqlSessionFactory;
+    }
+
+    public static void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {
+        MyBatisUtil.sqlSessionFactory = sqlSessionFactory;
+    }
+
     /**
      * ªÒ»°SqlSession
      *
