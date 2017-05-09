@@ -1,13 +1,20 @@
 package com.sully.domain;
 
+import java.io.Serializable;
+
 /**
  * @author gacl
- * users±íËù¶ÔÓ¦µÄÊµÌåÀà
- *
+ * usersè¡¨æ‰€å¯¹åº”çš„å®ä½“ç±»
+ *SQLè„šæœ¬å¦‚ä¸‹ï¼š
+ * create database mybatis;
+ * use mybatis;
+ * CREATE TABLE users(id INT PRIMARY KEY AUTO_INCREMENT, NAME VARCHAR(20), age INT);
+ * INSERT INTO users(NAME, age) VALUES('ruly', 27);
+ * INSERT INTO users(NAME, age) VALUES('sully', 27);
  */
-public class User {
+public class User implements Serializable{
 
-    //ÊµÌåÀàµÄÊôĞÔºÍ±íµÄ×Ö¶ÎÃû³ÆÒ»Ò»¶ÔÓ¦
+    //å®ä½“ç±»çš„å±æ€§å’Œè¡¨çš„å­—æ®µåç§°ä¸€ä¸€å¯¹åº”
     private int id;
     private String name;
     private int age;

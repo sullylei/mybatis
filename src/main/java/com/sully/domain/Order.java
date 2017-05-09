@@ -1,16 +1,23 @@
 package com.sully.domain;
 
+import java.io.Serializable;
+
 /**
  * Created by Administrator on 2016/4/9.
- * 定义orders表对应的实体类
+ * 定义orders表对应的实体类:
+
  */
-public class Order {
+public class Order implements Serializable {
     /**
      *
      CREATE TABLE orders(
      order_id INT PRIMARY KEY AUTO_INCREMENT,
      order_no VARCHAR(20),
      order_price FLOAT
+     );
+     INSERT INTO orders(order_no, order_price) VALUES('aaaa', 23);
+     INSERT INTO orders(order_no, order_price) VALUES('bbbb', 33);
+     INSERT INTO orders(order_no, order_price) VALUES('cccc', 22);
      );
      */
 

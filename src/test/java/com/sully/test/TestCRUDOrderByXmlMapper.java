@@ -13,31 +13,31 @@ public class TestCRUDOrderByXmlMapper {
     public void getOrderById() {
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
         /**
-         * Ó³ÉäsqlµÄ±êÊ¶×Ö·û´®£¬
-         * me.gacl.mapping.orderMapperÊÇorderMapper.xmlÎÄ¼şÖĞmapper±êÇ©µÄnamespaceÊôĞÔµÄÖµ£¬
-         * getOrderByIdÊÇselect±êÇ©µÄidÊôĞÔÖµ£¬Í¨¹ıselect±êÇ©µÄidÊôĞÔÖµ¾Í¿ÉÒÔÕÒµ½ÒªÖ´ĞĞµÄSQL
+         * æ˜ å°„sqlçš„æ ‡è¯†å­—ç¬¦ä¸²ï¼Œ
+         * me.gacl.mapping.orderMapperæ˜¯orderMapper.xmlæ–‡ä»¶ä¸­mapperæ ‡ç­¾çš„namespaceå±æ€§çš„å€¼ï¼Œ
+         * getOrderByIdæ˜¯selectæ ‡ç­¾çš„idå±æ€§å€¼ï¼Œé€šè¿‡selectæ ‡ç­¾çš„idå±æ€§å€¼å°±å¯ä»¥æ‰¾åˆ°è¦æ‰§è¡Œçš„SQL
          */
-        String statement = "com.sully.mapping.orderMapper.getOrderById";//Ó³ÉäsqlµÄ±êÊ¶×Ö·û´®
-        //Ö´ĞĞ²éÑ¯²Ù×÷£¬½«²éÑ¯½á¹û×Ô¶¯·â×°³ÉOrder¶ÔÏó·µ»Ø
-        Order order = sqlSession.selectOne(statement,2);//²éÑ¯orders±íÖĞidÎª1µÄ¼ÇÂ¼
-        //Ê¹ÓÃSqlSessionÖ´ĞĞÍêSQLÖ®ºóĞèÒª¹Ø±ÕSqlSession
-        sqlSession.close();
-        System.out.println(order);//´òÓ¡½á¹û£ºnull£¬Ò²¾ÍÊÇÃ»ÓĞ²éÑ¯³öÏàÓ¦µÄ¼ÇÂ¼
+        String statement = "com.sully.mapping.orderMapper.getOrderById";//æ˜ å°„sqlçš„æ ‡è¯†å­—ç¬¦ä¸²
+        //æ‰§è¡ŒæŸ¥è¯¢æ“ä½œï¼Œå°†æŸ¥è¯¢ç»“æœè‡ªåŠ¨å°è£…æˆOrderå¯¹è±¡è¿”å›
+        Order order = sqlSession.selectOne(statement,2);//æŸ¥è¯¢ordersè¡¨ä¸­idä¸º1çš„è®°å½•
+        //ä½¿ç”¨SqlSessionæ‰§è¡Œå®ŒSQLä¹‹åéœ€è¦å…³é—­SqlSession
+        MyBatisUtil.closeSqlSession();
+        System.out.println(order);//æ‰“å°ç»“æœï¼šnullï¼Œä¹Ÿå°±æ˜¯æ²¡æœ‰æŸ¥è¯¢å‡ºç›¸åº”çš„è®°å½•
     }
 
     @Test
     public void selectOrder() {
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
         /**
-         * Ó³ÉäsqlµÄ±êÊ¶×Ö·û´®£¬
-         * me.gacl.mapping.orderMapperÊÇorderMapper.xmlÎÄ¼şÖĞmapper±êÇ©µÄnamespaceÊôĞÔµÄÖµ£¬
-         * getOrderByIdÊÇselect±êÇ©µÄidÊôĞÔÖµ£¬Í¨¹ıselect±êÇ©µÄidÊôĞÔÖµ¾Í¿ÉÒÔÕÒµ½ÒªÖ´ĞĞµÄSQL
+         * æ˜ å°„sqlçš„æ ‡è¯†å­—ç¬¦ä¸²ï¼Œ
+         * me.gacl.mapping.orderMapperæ˜¯orderMapper.xmlæ–‡ä»¶ä¸­mapperæ ‡ç­¾çš„namespaceå±æ€§çš„å€¼ï¼Œ
+         * getOrderByIdæ˜¯selectæ ‡ç­¾çš„idå±æ€§å€¼ï¼Œé€šè¿‡selectæ ‡ç­¾çš„idå±æ€§å€¼å°±å¯ä»¥æ‰¾åˆ°è¦æ‰§è¡Œçš„SQL
          */
-        String statement = "com.sully.mapping.orderMapper.selectOrder";//Ó³ÉäsqlµÄ±êÊ¶×Ö·û´®
-        //Ö´ĞĞ²éÑ¯²Ù×÷£¬½«²éÑ¯½á¹û×Ô¶¯·â×°³ÉOrder¶ÔÏó·µ»Ø
-        Order order = sqlSession.selectOne(statement,2);//²éÑ¯orders±íÖĞidÎª1µÄ¼ÇÂ¼
-        //Ê¹ÓÃSqlSessionÖ´ĞĞÍêSQLÖ®ºóĞèÒª¹Ø±ÕSqlSession
+        String statement = "com.sully.mapping.orderMapper.selectOrder";//æ˜ å°„sqlçš„æ ‡è¯†å­—ç¬¦ä¸²
+        //æ‰§è¡ŒæŸ¥è¯¢æ“ä½œï¼Œå°†æŸ¥è¯¢ç»“æœè‡ªåŠ¨å°è£…æˆOrderå¯¹è±¡è¿”å›
+        Order order = sqlSession.selectOne(statement,2);//æŸ¥è¯¢ordersè¡¨ä¸­idä¸º1çš„è®°å½•
+        //ä½¿ç”¨SqlSessionæ‰§è¡Œå®ŒSQLä¹‹åéœ€è¦å…³é—­SqlSession
         sqlSession.close();
-        System.out.println(order);//´òÓ¡½á¹û£ºnull£¬Ò²¾ÍÊÇÃ»ÓĞ²éÑ¯³öÏàÓ¦µÄ¼ÇÂ¼
+        System.out.println(order);//æ‰“å°ç»“æœï¼šnullï¼Œä¹Ÿå°±æ˜¯æ²¡æœ‰æŸ¥è¯¢å‡ºç›¸åº”çš„è®°å½•
     }
 }

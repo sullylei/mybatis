@@ -23,7 +23,7 @@ public class Test4 {
         //执行查询操作，将查询结果自动封装成Classes对象返回
         Classes clazz = sqlSession.selectOne(statement, 1);//查询class表中id为1的记录
         //使用SqlSession执行完SQL之后需要关闭SqlSession
-        sqlSession.close();
+        MyBatisUtil.closeSqlSession();
         //打印结果：Classes [id=1, name=class_a, teacher=Teacher [id=1, name=teacher1], students=[Student [id=1, name=student_A], Student [id=2, name=student_B], Student [id=3, name=student_C]]]
         System.out.println(clazz);
     }
@@ -40,7 +40,7 @@ public class Test4 {
         //执行查询操作，将查询结果自动封装成Classes对象返回
         Classes clazz = sqlSession.selectOne(statement, 1);//查询class表中id为1的记录
         //使用SqlSession执行完SQL之后需要关闭SqlSession
-        sqlSession.close();
+        MyBatisUtil.closeSqlSession();
         //打印结果：Classes [id=1, name=class_a, teacher=Teacher [id=1, name=teacher1], students=[Student [id=1, name=student_A], Student [id=2, name=student_B], Student [id=3, name=student_C]]]
         System.out.println(clazz);
     }

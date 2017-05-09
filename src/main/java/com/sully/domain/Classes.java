@@ -4,13 +4,29 @@ package com.sully.domain;
  * Created by Administrator on 2016/4/10.
  */
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
- * @author gacl
  * 定义class表对应的实体类
+ CREATE TABLE teacher(
+ t_id INT PRIMARY KEY AUTO_INCREMENT,
+ t_name VARCHAR(20)
+ );
+ CREATE TABLE class(
+ c_id INT PRIMARY KEY AUTO_INCREMENT,
+ c_name VARCHAR(20),
+ teacher_id INT
+ );
+ ALTER TABLE class ADD CONSTRAINT fk_teacher_id FOREIGN KEY (teacher_id) REFERENCES teacher(t_id);
+
+ INSERT INTO teacher(t_name) VALUES('teacher1');
+ INSERT INTO teacher(t_name) VALUES('teacher2');
+
+ INSERT INTO class(c_name, teacher_id) VALUES('class_a', 1);
+ INSERT INTO class(c_name, teacher_id) VALUES('class_b', 2);
  */
-public class Classes {
+public class Classes implements Serializable {
 
     //定义实体类的属性，与class表中的字段对应
     private int id;            //id===>c_id

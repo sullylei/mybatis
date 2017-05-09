@@ -17,18 +17,25 @@
       根据id查询得到一个order对象，使用这个查询是查询不到我们想要的结果的，
       这主要是因为实体类的属性名和数据库的字段名对应不上的原因，因此无法查询出对应的记录
    -->
-    <select id="getOrderById" parameterType="int"
-            resultMap="orderResultMap">
-        select * from orders where order_id=#{id}
-    </select>
-    <!--
-          根据id查询得到一个order对象，使用这个查询是可以正常查询到我们想要的结果的，
-          这是因为我们将查询的字段名都起一个和实体类属性名相同的别名，这样实体类的属性名和查询结果中的字段名就可以一一对应上
-       -->
+    <sql id="selectSql">
+        order_id as id,
+        order_no as orderNo,
+        order_price as price
+    </sql>
+
+
+          <select id="getOrderById" parameterType="int"
+                  resultMap="orderResultMap">
+              select * from orders where order_id=#{id}
+          </select>
+        <!--
+              根据id查询得到一个order对象，使用这个查询是可以正常查询到我们想要的结果的，
+              这是因为我们将查询的字段名都起一个和实体类属性名相同的别名，这样实体类的属性名和查询结果中的字段名就可以一一对应上
+           -->
     <select id="selectOrder"
             parameterType="int"
             resultType="com.sully.domain.Order">
-        select order_id id, order_no orderNo,order_price price from orders where order_id=#{id}
+        select <include refid="selectSql"/> from orders where order_id=#{id}
     </select>
 
 </mapper>

@@ -30,7 +30,7 @@ public class TestOneLevelCache {
          */
         user = session.selectOne(statement, 1);
         System.out.println(user);
-        session.close();
+        MyBatisUtil.closeSqlSession();
         /*
          1. 必须是同一个Session,如果session对象已经close()过了就不可能用了 
          */

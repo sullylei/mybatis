@@ -15,8 +15,8 @@ public class TestCRUDByXmlMapper {
 
     @Test
     public void testAdd() {
-        //SqlSession sqlSession = MyBatisUtil.getSqlSession(false);
-        SqlSession sqlSession = MyBatisUtil.getSqlSession(true);
+        SqlSession sqlSession = MyBatisUtil.getSqlSession(false);
+//        SqlSession sqlSession = MyBatisUtil.getSqlSession(true);
         /**
          * 映射sql的标识字符串，
          * com.sully.mapping.userMapper是userMapper.xml文件中mapper标签的namespace属性的值，
@@ -24,14 +24,14 @@ public class TestCRUDByXmlMapper {
          */
         String statement = "com.sully.mapping.userMapper.addUser";//映射sql的标识字符串
         User user = new User();
-        user.setName("用户孤傲苍狼");
-        user.setAge(20);
+        user.setName("豹子");
+        user.setAge(5);
         //执行插入操作
         int retResult = sqlSession.insert(statement, user);
         //手动提交事务
-        //sqlSession.commit();
+        sqlSession.commit();
         //使用SqlSession执行完SQL之后需要关闭SqlSession
-        sqlSession.close();
+        MyBatisUtil.closeSqlSession();
         System.out.println(retResult);
     }
 
@@ -45,13 +45,13 @@ public class TestCRUDByXmlMapper {
          */
         String statement = "com.sully.mapping.userMapper.updateUser";//映射sql的标识字符串
         User user = new User();
-        user.setId(3);
+        user.setId(4);
         user.setName("孤傲苍狼");
         user.setAge(25);
         //执行修改操作
         int retResult = sqlSession.update(statement, user);
         //使用SqlSession执行完SQL之后需要关闭SqlSession
-        sqlSession.close();
+        MyBatisUtil.closeSqlSession();
         System.out.println(retResult);
     }
 
@@ -65,9 +65,9 @@ public class TestCRUDByXmlMapper {
          */
         String statement = "com.sully.mapping.userMapper.deleteUser";//映射sql的标识字符串
         //执行删除操作
-        int retResult = sqlSession.delete(statement, 5);
+        int retResult = sqlSession.delete(statement, 4);
         //使用SqlSession执行完SQL之后需要关闭SqlSession
-        sqlSession.close();
+        MyBatisUtil.closeSqlSession();
         System.out.println(retResult);
     }
 

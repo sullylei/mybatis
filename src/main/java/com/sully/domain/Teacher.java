@@ -3,13 +3,16 @@ package com.sully.domain;
 /**
  * Created by Administrator on 2016/4/10.
  */
+
+import java.io.Serializable;
+
 /**
  * @author gacl
- * ¶¨Òåteacher±í¶ÔÓ¦µÄÊµÌåÀà
+ * å®šä¹‰teacherè¡¨å¯¹åº”çš„å®žä½“ç±»
  */
-public class Teacher {
+public class Teacher implements Serializable{
 
-    //¶¨ÒåÊµÌåÀàµÄÊôÐÔ£¬Óëteacher±íÖÐµÄ×Ö¶Î¶ÔÓ¦
+    //å®šä¹‰å®žä½“ç±»çš„å±žæ€§ï¼Œä¸Žteacherè¡¨ä¸­çš„å­—æ®µå¯¹åº”
     private int id;            //id===>t_id
     private String name;    //name===>t_name
 

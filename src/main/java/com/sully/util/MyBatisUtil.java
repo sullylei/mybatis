@@ -11,17 +11,14 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 public class MyBatisUtil {
+    private static SqlSessionFactory sqlSessionFactory;
 
-    /**
-     * 获取SqlSessionFactory
-     *
-     * @return SqlSessionFactory
-     */
-    public static SqlSessionFactory getSqlSessionFactory() {
+    private static ThreadLocal<SqlSession> sqlSessionThreadLocal = new ThreadLocal<SqlSession>();
+
+    static{
         String resource = "config.xml";
         InputStream is = MyBatisUtil.class.getClassLoader().getResourceAsStream(resource);
-        SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(is);
-        return factory;
+        sqlSessionFactory = new SqlSessionFactoryBuilder().build(is);
     }
 
     /**
@@ -30,7 +27,12 @@ public class MyBatisUtil {
      * @return SqlSession
      */
     public static SqlSession getSqlSession() {
-        return getSqlSessionFactory().openSession();
+        SqlSession sqlSession = sqlSessionThreadLocal.get();
+        if(sqlSession == null){
+            sqlSession = sqlSessionFactory.openSession();
+            sqlSessionThreadLocal.set(sqlSession);
+        }
+        return sqlSession;
     }
 
     /**
@@ -41,6 +43,24 @@ public class MyBatisUtil {
      * @return SqlSession
      */
     public static SqlSession getSqlSession(boolean isAutoCommit) {
-        return getSqlSessionFactory().openSession(isAutoCommit);
+        SqlSession sqlSession = sqlSessionThreadLocal.get();
+        if(sqlSession == null){
+            sqlSession = sqlSessionFactory.openSession(isAutoCommit);
+            sqlSessionThreadLocal.set(sqlSession);
+        }
+        return sqlSession;
+    }
+
+    /**
+     * 关闭SqlSession
+     *
+     * 切记需要从ThreadLocal中remove掉SqlSession
+     */
+    public static void closeSqlSession(){
+        SqlSession sqlSession = sqlSessionThreadLocal.get();
+        if(sqlSession != null){
+            sqlSession.close();
+            sqlSessionThreadLocal.remove();
+        }
     }
 }

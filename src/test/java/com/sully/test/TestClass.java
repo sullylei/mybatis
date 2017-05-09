@@ -2,6 +2,7 @@ package com.sully.test;
 
 /**
  * Created by Administrator on 2016/4/10.
+ * http://www.cnblogs.com/xdp-gacl/p/4264440.html
  */
 
 import com.sully.domain.Classes;
@@ -23,7 +24,7 @@ public class TestClass {
         //执行查询操作，将查询结果自动封装成Classes对象返回
         Classes clazz = sqlSession.selectOne(statement, 1);//查询class表中id为1的记录
         //使用SqlSession执行完SQL之后需要关闭SqlSession
-        sqlSession.close();
+        MyBatisUtil.closeSqlSession();
         System.out.println(clazz);//打印结果：Classes [id=1, name=class_a, teacher=Teacher [id=1, name=teacher1]]
     }
 
